@@ -1,0 +1,21 @@
+name: Docker Build
+
+on:
+  push:
+    branches: [main, dev]
+  pull_request:
+    branches: [main]
+
+jobs:
+  docker-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t visdrone-pipeline:ci .
+
+      - name: Smoke test
+        run: docker run --rm visdrone-pipeline:ci python -c "import ultralytics; print('OK')"
