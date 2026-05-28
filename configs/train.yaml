@@ -1,0 +1,30 @@
+# YOLOv8 training config
+model: yolov8n.pt        # nano model for CPU
+
+epochs: 50
+batch: 8                 # small batch for CPU
+imgsz: 640
+workers: 2
+
+# Optimizer
+optimizer: SGD
+lr0: 0.01
+momentum: 0.937
+weight_decay: 0.0005
+
+# Augmentation
+hsv_h: 0.015
+hsv_s: 0.7
+hsv_v: 0.4
+flipud: 0.0
+fliplr: 0.5
+mosaic: 1.0
+
+# Subset for CPU training
+fraction: 0.1            # use 10% of dataset = ~647 images
+
+# Logging
+project: logs
+name: baseline
+save: true
+save_period: 10
