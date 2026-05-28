@@ -1,0 +1,38 @@
+# Data
+data/raw/
+data/processed/
+data/drifted/
+
+# Models
+models/
+*.pt
+*.pth
+*.onnx
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Environment
+.env
+.venv/
+venv/
+conda/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs
+logs/*.png
+logs/*.csv
+logs/*.json
+runs/
+
+# OS
+.DS_Store
+Thumbs.db
