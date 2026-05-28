@@ -1,4 +1,3 @@
-import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from pathlib import Path
@@ -20,7 +19,7 @@ def compute_split_stats(label_dir: Path):
     for lbl_file in tqdm(sorted(label_dir.glob("*.txt")), desc=str(label_dir)):
         total_images += 1
         lines = lbl_file.read_text().strip().split("\n")
-        lines = [l for l in lines if l.strip()]
+        lines = [line for line in lines if line.strip()]
 
         if not lines:
             empty_images += 1

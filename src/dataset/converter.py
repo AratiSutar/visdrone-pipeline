@@ -1,4 +1,3 @@
-import os
 import shutil
 import cv2
 import numpy as np
@@ -107,8 +106,8 @@ def convert_all(raw_root: str = "data/raw", out_root: str = "data/processed"):
     out_root = Path(out_root)
 
     splits = {
-        "train": raw_root / "VisDrone2019-DET-train",
-        "val":   raw_root / "VisDrone2019-DET-val",
+        "train": raw_root / "VisDrone2019-DET-train" / "VisDrone2019-DET-train",
+        "val":   raw_root / "VisDrone2019-DET-val" / "VisDrone2019-DET-val",
         "test":  raw_root / "VisDrone2019-DET-test-dev",
     }
 
