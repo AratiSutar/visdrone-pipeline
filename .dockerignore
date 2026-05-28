@@ -1,0 +1,12 @@
+data/
+models/
+logs/
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.git/
+notebooks/
+*.md
