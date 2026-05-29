@@ -1,7 +1,6 @@
 from pathlib import Path
 from ultralytics import YOLO
 import pandas as pd
-import yaml
 
 
 CLASS_NAMES = [
@@ -29,3 +28,38 @@ def evaluate(
     model = YOLO(model_path)
 
     # Run validation
+    metrics = model.val(
+        data=dataset_path,
+        split="val",
+        project=output_dir,
+        name="eval",
+        exist_ok=True,
+    )
+
+    # Print results
+    print("\n=== Evaluation Results ===")
+    print(f"mAP50:     {metrics.box.map50:.4f}")
+    print(f"mAP50-95:  {metrics.box.map:.4f}")
+
+    # Per class metrics
+    rows = []
+    for i, name in enumerate(CLASS_NAMES):
+        rows.append({
+            "class": name,
+            "ap50":  round(metrics.box.ap50[i], 4) if i < len(metrics.box.ap50) else 0,
+        })
+
+    df = pd.DataFrame(rows)
+    print("\n=== Per Class AP50 ===")
+    print(df.to_string(index=False))
+
+    # Save to csv
+    csv_path = Path(output_dir) / "eval_results.csv"
+    df.to_csv(csv_path, index=False)
+    print(f"\n[saved] {csv_path}")
+
+    return metrics
+
+
+if __name__ == "__main__":
+    evaluate()
