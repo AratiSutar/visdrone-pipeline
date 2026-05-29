@@ -1,5 +1,4 @@
 import shutil
-import numpy as np
 import pandas as pd
 from pathlib import Path
 from ultralytics import YOLO
