@@ -39,3 +39,5 @@ Thumbs.db
 
 data/*.zip
 data/*.tar.gz
+
+data/active_learning/
