@@ -1,6 +1,4 @@
-import cv2
 import numpy as np
-import json
 from pathlib import Path
 from tqdm import tqdm
 from ultralytics import YOLO
